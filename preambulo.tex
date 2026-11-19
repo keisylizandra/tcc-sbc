@@ -1,0 +1,52 @@
+%% preambulo.tex — incluído por main.tex
+
+%%%% Pacotes do template SBC
+\usepackage{graphicx,url}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage[brazil]{babel}%   texto em português
+
+%%%% Pacotes adicionais deste manuscrito
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{booktabs}%        \toprule, \midrule, \bottomrule
+\usepackage{array}%           colunas de largura fixa (tipo L)
+\usepackage{makecell}%        cabeçalhos de tabela em duas linhas
+\usepackage{tabularx}%        tabelas que ocupam toda a largura do texto
+\usepackage{etoolbox}%
+
+%% Centraliza todas as tabelas e figuras (a classe Springer fazia isso sozinha)
+\AtBeginEnvironment{table}{\centering}
+\AtBeginEnvironment{figure}{\centering}
+
+\sloppy
+
+%% Coluna de texto que quebra linha e mantém alinhamento à esquerda
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+%% Coluna que estica até completar a largura do texto (alinhada à esquerda)
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+%% Fonte das tabelas em um único lugar: editar aqui muda todas de uma vez.
+%% Aparece logo abaixo da tabela, em letra menor.
+\newcommand{\fontetabela}{\par\smallskip{\small Fonte: Elaborada pelos
+autores, a partir da Coorte de 100 Milhões de Brasileiros vinculada ao
+SINASC.}}
+
+%% Ajuste comum às tabelas de subgrupos (7 colunas)
+\newcommand{\tabcompacta}{\small\setlength{\tabcolsep}{4pt}}
+
+\usepackage{tikz}%           fluxograma da metodologia
+\usetikzlibrary{positioning,arrows.meta}
+\usepackage{placeins}%       \FloatBarrier: impede tabelas de passarem para a seção seguinte
+\usepackage{longtable}%       tabela que atravessa páginas (trabalhos relacionados)
+
+\graphicspath{{figuras/}}% todas as imagens ficam em figuras/
+
+\raggedbottom
+
+%% Permite quebrar endereços longos (DOIs nas referências) em qualquer caractere
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do0\do1\do2\do3\do4\do5\do6\do7\do8\do9}
+\makeatother

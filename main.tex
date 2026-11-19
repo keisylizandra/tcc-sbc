@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Análise de fatores associados a desfechos neonatais adversos     %%
+%%  em populações vulneráveis do Brasil                              %%
+%%                                                                   %%
+%%  Template SBC para conferências (sbc-template.sty, v2017).        %%
+%%                                                                   %%
+%%  ARQUIVO PRINCIPAL. Contém apenas a estrutura do documento; o     %%
+%%  texto está dividido em secoes/ e o preâmbulo em preambulo.tex.   %%
+%%  Compile sempre este arquivo (main.tex) (os demais não compilam sozinhos).   %%
+%%                                                                   %%
+%%  Arquivos do template que precisam estar NESTA pasta:             %%
+%%    sbc-template.sty   e   sbc.bst                                 %%
+%%  (vêm no projeto do template SBC no Overleaf)                     %%
+%%                                                                   %%
+%%  Compilação: pdflatex -> bibtex -> pdflatex -> pdflatex           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+%% Pacotes, macros e configurações
+\input{preambulo}
+
+%% Título, autores e afiliações
+\input{secoes/00-frontmatter}
+
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{xcolor} % Opcional: apenas para um sombreado sutil nos cabeçalhos de grupo
+
+% Define a coluna Y (assumindo que você já tenha algo similar no seu preâmbulo)
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% Comando para linha de seção/estrato: mescla as 7 colunas, alinha à esquerda em negrito
+% e adiciona um leve respiro vertical antes do título
+\newcommand{\secaotabela}[1]{%
+  \addlinespace[4pt]%
+  \multicolumn{7}{@{}l}{\textbf{#1}} \\%
+  \addlinespace[1.5pt]%
+}
+
+
+\begin{document}
+
+\maketitle
+
+%% Abstract (inglês) e Resumo (português)
+\input{secoes/00b-resumo}
+
+%%=====================================================================%%
+%% Corpo do artigo. Para desativar temporariamente uma seção durante a %%
+%% escrita, basta comentar a linha \input correspondente.              %%
+%%=====================================================================%%
+
+\input{secoes/01-introducao}
+\input{secoes/01b-trabalhos-relacionados}
+\input{secoes/02-metodologia}
+\input{secoes/03-resultados}
+\input{secoes/04-discussao}
+\input{secoes/05-conclusao}
+
+%% Agradecimentos (opcional)
+\input{secoes/06-backmatter}
+
+\bibliographystyle{sbc}
+\bibliography{referencias/referencias}% arquivo .bib em referencias/
+
+\end{document}

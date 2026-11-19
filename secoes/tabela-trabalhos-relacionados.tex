@@ -1,0 +1,63 @@
+%% secoes/tabela-trabalhos-relacionados.tex — incluído por 01b-trabalhos-relacionados.tex
+%%
+%% Tabela-resumo dos trabalhos relacionados (2020-2026), em página
+%% retrato, com quebra automática entre páginas (longtable).
+%% O ano aparece na própria citação; o desfecho é o título de cada
+%% grupo; o DOI de cada artigo está na lista de referências.
+%% Para incluir um artigo novo, copie uma linha do grupo certo e
+%% acrescente a referência em referencias/referencias.bib.
+
+\begin{table}[p]
+\centering
+\caption{Trabalhos de 2020 a 2026 que investigaram fatores sociais e econômicos associados aos desfechos deste estudo a partir do SINASC ou da Coorte de 100 Milhões de Brasileiros.}
+\label{tab:rel-trabalhos}
+
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.04}
+
+% Distribuição otimizada: colunas curtas com largura exata e 'Y' (coluna X alinhada à esquerda)
+% absorvendo todo o espaço restante para a coluna de fatores de risco
+\begin{tabularx}{\textwidth}{@{}p{2.3cm} p{1.85cm} p{2.55cm} p{2.35cm} Y@{}}
+\toprule
+\textbf{Estudo} & \textbf{Base de dados} & \textbf{Recorte} & \textbf{Técnica} & \textbf{Fatores de maior risco} \\
+\midrule
+\multicolumn{5}{@{}l}{\textbf{Baixo peso ao nascer}} \\
+\cite{falcao2020} & 100M + SINASC & Brasil, baixa renda; 8,8 mi nascidos a termo (2001--2015) & Regressão logística & Poucas consultas de pré-natal, primiparidade, baixa escolaridade, sexo feminino, idade $\geq$35 anos, mãe preta \\
+\cite{falcao2021} & 100M + SINASC & Brasil, baixa renda; 5,5 mi (2012--2015) & Regressão logística multinomial & PIG: sem pré-natal, analfabetismo, mãe preta ou indígena, idade 14--20 anos \\
+\cite{falcao2023} & CIDACS + BF & Brasil, baixa renda; 4,3 mi (2012--2015) & Escore de propensão & BF reduziu o BPN em 11\%, mais entre indígenas, mães com $\leq$3 anos de estudo e com $<$7 consultas \\
+\cite{almeida2026} & SINASC & São Paulo; 2,5 mi (2019--2023) & Aprendizado de máquina & Gestação múltipla, $\leq$6 consultas, anomalia, idade $\geq$35 anos (descritivo) \\
+
+\addlinespace[3.5pt]
+\multicolumn{5}{@{}l}{\textbf{Nascimento pré-termo}} \\
+\cite{rocha2022} & CIDACS & Brasil, multíparas de baixa renda; 3,5 mi (2001--2015) & Modelos de transição (reg. logística) & Até 3 consultas, intervalo entre partos $<$12 meses, idade $\geq$35; só no incidente: indígena, 14--19 anos, adensamento \\
+\cite{alberton2023} & SINASC & Brasil (2011--2021) & Séries temporais & Indígenas, 1--3 anos de estudo, idades extremas, 1--3 consultas, região Norte \\
+\cite{ortelan2024} & 100M + BF + SINASC & Brasil, multíparas de baixa renda; 1 mi (2012--2015) & Escore de propensão & BF reduziu em 31\% o pré-termo extremo; sem efeito no total \\
+\cite{victor2025} & SINASC & Brasil, por UF (2014--2023) & Séries temporais & Sem escolaridade, indígenas, pretas, idades extremas, Norte e Nordeste \\
+
+\addlinespace[3.5pt]
+\multicolumn{5}{@{}l}{\textbf{Malformação congênita}} \\
+\cite{trevilato2022} & SINASC & Rio Grande do Sul; 5.250 casos (2012--2015) & Caso-controle; reg. logística & Idade $>$40 anos, nenhuma consulta, $<$4 anos de estudo, mãe preta, perda fetal anterior \\
+\cite{anele2022} & SINASC & Porto Alegre, por nível de desenv. (2000--2017) & Regressão de Poisson & Idade materna avançada; $<$8 anos de estudo só nas áreas mais desenvolvidas \\
+\cite{paixao2022} & SINASC + reg. eventos & Brasil; 11,4 mi (2015--2018) & Regressão logística & Síndrome do Zika: mãe preta ou parda, solteira, $<$12 anos de estudo, menos consultas \\
+\cite{fernandes2025} & SINASC + SIM & Brasil; 26,1 mi (2012--2020) & Reg. logística hierárquica & Idade $>$40 anos, gestação múltipla, sem pré-natal, mãe preta \\
+\cite{melkan2025} & SINASC & Brasil; 29 mi (2011--2020) & Descritiva e tendência temporal & Mães pretas, gestação múltipla, sexo masculino; tubo neural inverso à escolaridade \\
+
+\addlinespace[3.5pt]
+\multicolumn{5}{@{}l}{\textbf{Apgar baixo}} \\
+\cite{magalhaes2023} & SINASC & Brasil; 9 mi (1999 e 2018--2019) & Regressão logística & Prematuridade, baixo peso, anomalia; idade $\geq$35, $<$8 anos de estudo, solteira, $<$6 consultas, RN preto \\
+\cite{pinto2024} & SINASC & Brasil, meninas de 10--14 anos (2011--2021) & Ecológico; análise espacial & Mais Apgar baixo e BPN entre meninas de 10--14 anos, maioria negra, Norte e Nordeste \\
+\cite{lima2025} & SINASC & Indígenas do Território Wayamu (PA); 713 nasc. (2013--2022) & Descritiva & Cerca de 9\% com Apgar $<$8; gravidez na adolescência, poucas consultas \\
+\cite{delcarretto2025} & SINASC + temperatura & São Paulo; 3,2 mi de baixo risco (2013--2019) & Caso-cruzado & Calor extremo, com efeito em mães com $<$12 anos de estudo e pardas \\
+
+\addlinespace[3.5pt]
+\multicolumn{5}{@{}l}{\textbf{Múltiplos desfechos} (pré-termo, BPN, anomalia e/ou Apgar)} \\
+\cite{reboucas2024} & SINASC + SIM & Brasil; 21,3 mi (2012--2019) & Frações atribuíveis & Mães indígenas e pretas, sobretudo as de menor escolaridade \\
+\cite{pescarini2024} & CIDACS + SIM & Brasil, mães migrantes; 10,3 mi (2011--2018) & Regressão logística & Migrantes: mais anomalia (sobretudo pretas), menos pré-termo e BPN; Apgar sem diferença \\
+\bottomrule
+\end{tabularx}
+
+\vspace{3pt}
+\parbox{\textwidth}{\raggedright\fontsize{6.5}{7.5}\selectfont
+\textbf{Fonte:} elaborada pelos autores. 100M: Coorte de 100 Milhões de Brasileiros; CIDACS: Coorte de Nascimentos do CIDACS (SINASC vinculado à 100M); SIM: Sistema de Informações sobre Mortalidade; BPN: baixo peso ao nascer; PIG: pequeno para a idade gestacional; BF: Bolsa Família; RN: recém-nascido; UF: unidade federativa; mi: milhões.}
+\end{table}

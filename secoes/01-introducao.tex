@@ -1,0 +1,42 @@
+%% secoes/01-introducao.tex — incluído por main.tex
+
+%%=====================================================================%%
+\section{Introdução}\label{sec:introducao}
+%%=====================================================================%%
+
+O período neonatal concentra a maior parcela da mortalidade infantil \cite{unigme2024}. 
+No ano de 2023, 4,8 milhões de crianças que morreram antes dos cinco anos no mundo, sendo 2,3 milhões delas recém-nascidos \cite{unigme2024}. 
+Mais do que um período de risco elevado, é a janela em que se assentam as bases da sobrevivência e do desenvolvimento, de modo que as condições em que uma criança nasce repercutem ao longo de toda a sua vida \cite{lawn2014}. Nesse cenário, os desfechos neonatais adversos, eventos que sinalizam comprometimento da saúde já no nascimento, funcionam como indicadores sensíveis de saúde \cite{lawn2014}.
+Este trabalho trata de quatro desfechos neonatais adversos: baixo peso ao nascer, nascimento pré-termo, malformação congênita e Apgar baixo no quinto minuto.
+
+%Esses desfechos não se distribuem ao acaso: quanto menor a posição socioeconômica, pior o estado de saúde, padrão que se reproduz tanto entre países quanto dentro deles \cite{marmot2008}. O Brasil é um caso emblemático dessa tensão. Apesar dos avanços expressivos na saúde materno-infantil nas últimas décadas, impulsionados por crescimento econômico, redução das desigualdades de renda, expansão da atenção básica e programas de transferência de renda \cite{victora2011}, persistem profundas iniquidades entre regiões e grupos sociais, que fazem com que o risco de um desfecho adverso ao nascer dependa, ainda hoje, de onde e de quem a criança nasce.
+
+ 
+%As subseções a seguir apresentam cada um deles.
+
+%%---------------------------------------------------------------------%%
+%% Subseções da introdução, um arquivo por desfecho.                   %%
+%% Caminhos relativos à pasta do manuscrito, não à deste arquivo.      %%
+%%---------------------------------------------------------------------%%
+
+\input{secoes/introducao/01-baixo-peso}
+\input{secoes/introducao/02-pre-termo}
+\input{secoes/introducao/03-malformacao}
+\input{secoes/introducao/04-apgar}
+
+%%---------------------------------------------------------------------%%
+%\subsection{Objetivo e organização do trabalho}\label{subsec:intro-objetivo}
+%%---------------------------------------------------------------------%%
+
+Apesar de já existir uma extensa literaura sobre desfechos neonatais adversos, os fatores associados a eles seguem pouco elucidados em populações socioeconomicamente mais vulneráveis, como indígenas, quilombolas, moradores de pequenas cidades ou da zona rural e mulheres de jovens ou de baixa escolaridade. 
+%Tais grupos não homogêneos e necessitam de estudos e olhares específicos. 
+Em geral, essas populações entram nos estudos como variáveis de ajuste de um modelo único, e não como recortes analisados separadamente, cada um com a sua própria prevalência de referência. Além disso, os desfechos costumam ser estudados um de cada vez, o que dificulta identificar quais fatores são comuns a vários deles e quais são próprios de cada um.
+
+Diante disso, o objetivo deste trabalho é identificar, através de uma técnica de inteligência artificial, a combinações de características associadas a maior ocorrência dos quatro desfechos em oito recortes de populações socioeconomicamente vulneráveis do Brasil, são eles: municípios de até 10 mil habitantes, população rural, indígena e quilombola, beneficiárias do Programa Bolsa Família, mães com baixa escolaridade e mães com menos de 15 anos.
+
+%Para isso, aplica-se o algoritmo SSDP+ à Coorte de 100 Milhões de Brasileiros vinculada ao SINASC. A análise abrange o recorte geral, como referência, e sete segmentos vulneráveis: municípios de até 10 mil habitantes, população rural, indígena e quilombola, beneficiárias do Programa Bolsa Família, mães com baixa escolaridade e mães com menos de 15 anos. Busca-se, assim, evidenciar padrões de risco próprios de cada grupo, capazes de subsidiar políticas mais direcionadas. Os subgrupos encontrados foram também disponibilizados em um painel interativo de visualização.
+
+O restante do trabalho está organizado da seguinte forma. A Seção~\ref{sec:relacionados} apresenta os trabalhos relacionados. 
+Já na Seção~\ref{sec:metodologia} descrevemos a metodologia utilizada. 
+A Seção~\ref{sec:resultados} apresenta os resultados, seguida da Seção~\ref{sec:discussao}, onde discutimos os resultados à luz da literatura.
+Por fim, a a Seção~\ref{sec:conclusao} apresenta as conclusões, limitações e trabalhos futuros.

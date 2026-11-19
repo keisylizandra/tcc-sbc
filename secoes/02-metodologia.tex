@@ -1,0 +1,189 @@
+%% secoes/02-metodologia.tex — incluído por main.tex
+
+%%=====================================================================%%
+\section{Metodologia}\label{sec:metodologia}
+%%=====================================================================%%
+
+A partir de uma coorte de base populacional, foram definidos quatro desfechos neonatais adversos e delimitadas oito populações de análise, às quais se aplicou um algoritmo de descoberta de subgrupos para identificar combinações de características associadas a maior ocorrência do desfecho. A Figura~\ref{fig:met-fluxograma} resume esse percurso, das fontes de dados aos subgrupos retornados; as subseções seguintes detalham cada etapa.
+
+%%---------------------------------------------------------------------%%
+%% Figura de metodologia: fluxograma desenhado em TikZ                 %%
+%%---------------------------------------------------------------------%%
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  node distance=4mm,
+  etapa/.style={draw, rounded corners=2pt, align=center, text width=11cm, inner sep=4pt},
+  seta/.style={-{Stealth[length=2.2mm]}, thick}]
+\node[etapa] (base) {\textbf{Coorte de 100 Milhões de Brasileiros vinculada ao SINASC}\\CadÚnico + SINASC + Programa Bolsa Família\\31.331.817 registros (mães e crianças)};
+\node[etapa, below=of base] (pares) {Pareamento de cada criança à sua mãe\\16.448.931 pares mãe--filho};
+\node[etapa, below=of pares] (periodo) {Nascimentos de 2011 a 2015\\5.246.874 registros};
+\node[etapa, below=of periodo] (gemelar) {Exclusão de gestações múltiplas\\5.242.215 recém-nascidos};
+\node[etapa, below=of gemelar] (limpeza) {Remoção de identificadores, atributos redundantes e atributos com mais de 50\% de valores ausentes\\42 atributos};
+\node[etapa, below=of limpeza] (analises) {\textbf{4 desfechos} (baixo peso, pré-termo, malformação congênita, Apgar baixo)\\$\times$ \textbf{8 populações} (recorte geral e 7 segmentos vulneráveis)\\= 32 análises independentes};
+\node[etapa, below=of analises] (ssdp) {SSDP+ com WRAcc: 5 subgrupos de maior WRAcc por análise\\(cobertura, ocorrências e \emph{lift} de cada subgrupo)};
+\node[etapa, below=of ssdp] (painel) {Painel interativo de visualização dos subgrupos};
+\foreach \a/\b in {base/pares,pares/periodo,periodo/gemelar,gemelar/limpeza,limpeza/analises,analises/ssdp,ssdp/painel}
+  \draw[seta] (\a) -- (\b);
+\end{tikzpicture}
+\caption{Resumo da metodologia utilizada.}\label{fig:met-fluxograma}
+\end{figure}
+
+
+%%---------------------------------------------------------------------%%
+\subsection{Fonte de dados e construção da amostra}\label{subsec:met-dados}
+%%---------------------------------------------------------------------%%
+
+Os dados provêm da Coorte de 100 Milhões de Brasileiros vinculada ao SINASC, que integra por pareamento probabilístico três registros administrativos \cite{pita2018}: o Cadastro Único (CadÚnico), que reúne informações socioeconômicas de famílias de baixa renda (composição familiar, renda, escolaridade e características do domicílio); o Sistema de Informações sobre Nascidos Vivos (SINASC), que descreve a criança, a mãe e o parto; e o Programa Bolsa Família, que informa o recebimento e a duração do benefício. Cada registro reúne, assim, as informações de nascimento, moradia, família e transferência de renda de um mesmo indivíduo.
+
+A amostra foi construída em quatro etapas, aplicadas nesta ordem sobre um recorte inicial de 31.331.817 registros, entre mães e crianças. (1) Cada criança foi pareada às informações de sua mãe, o que resultou em 16.448.931 pares mãe--filho. (2) Foram mantidos apenas os nascimentos ocorridos entre 2011 e 2015, restando 5.246.874 registros. (3) Excluíram-se as gestações múltiplas (gêmeos e trigêmeos), por se associarem com frequência ao baixo peso ao nascer, chegando-se a 5.242.215 registros. (4) Foram removidos identificadores, atributos redundantes e atributos com mais de 50\% de valores ausentes; esta última etapa reduz o número de colunas, sem alterar o número de registros.
+
+A base final reúne, portanto, 5.242.215 recém-nascidos de famílias de baixa renda, descritos por 42 atributos. A Tabela~\ref{tab:met-atributos} apresenta esses atributos. Para cada um, a tabela informa o nome da variável na base, o nome pelo qual ele aparece nas tabelas de resultados e a sua descrição. São esses os atributos que o algoritmo pode combinar para formar as descrições dos subgrupos, e é a eles que se referem todas as regras apresentadas na Seção~\ref{sec:resultados}.
+
+{\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}L{6.8cm}L{3.1cm}L{4.6cm}@{}}
+\caption{Os 42 atributos que descrevem o nascimento, a mãe, o domicílio e a família da criança, incluindo o recebimento do Bolsa Família.}\label{tab:met-atributos}\\
+\toprule
+Nome & Nome nos resultados & Descrição\\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\textit{Tabela~\ref{tab:met-atributos} (continuação)}}\\
+\toprule
+Nome & Nome nos resultados & Descrição\\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{@{}r}{\textit{continua na próxima página}}\\
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{14.9cm}@{}}{Fonte: Elaborada pelos autores, a partir da Coorte de 100 Milhões de Brasileiros vinculada ao SINASC.}\\
+\endlastfoot
+\texttt{bf\_baby} & Bolsa Família & Criança tinha BF antes de nascer\\
+\texttt{ses\_5cat} & índice de riqueza & Índice de riqueza relativo\\
+\texttt{age\_M} & idade materna & Idade da mãe\\
+\texttt{cct\_M} & transferência de renda & Mãe participa de algum programa de transferência de renda (bolsa escola, bolsa alimentação, PETI)\\
+\texttt{cod\_abaste\_agua\_domic} & abastecimento de água & Tipo de abastecimento de água no domicílio\\
+\texttt{cod\_agua\_canalizada\_fam} & água canalizada & Domicílio possui água canalizada\\
+\texttt{cod\_banheiro\_domic\_fam} & banheiro & Domicílio possui banheiro\\
+\texttt{cod\_calcamento\_domic\_fam} & calçamento do domicílio & Calçamento no domicílio\\
+\texttt{cod\_destino\_lixo\_domic\_fam\_eq} & destino do lixo & Destino do lixo no domicílio\\
+\texttt{cod\_escoa\_sanitario\_domic\_fam\_eq} & escoamento sanitário & Escoamento sanitário no domicílio\\
+\texttt{cod\_especie\_domic\_fam\_eq} & domicílio particular permanente & Status do domicílio\\
+\texttt{cod\_iluminacao\_domic\_fam\_eq} & iluminação & Iluminação no domicílio\\
+\texttt{cod\_material\_domic\_fam\_eq} & material do domicílio & Material do domicílio\\
+\texttt{cod\_material\_piso\_fam} & material do piso & Material do piso do domicílio\\
+\texttt{cod\_sabe\_ler\_escrever\_memb\_eq\_M} & sabe ler e escrever & Mãe sabe ler e escrever\\
+\texttt{consultas} & consultas & Número de consultas pré-natal\\
+\texttt{csection} & parto cesárea / parto normal & Tipo de parto\\
+\texttt{escolaridade\_eq\_M} & escolaridade materna & Escolaridade da mãe\\
+\texttt{estcivmae} & mãe solteira & Estado civil da mãe\\
+\texttt{female} & sexo & Sexo da criança feminino\\
+\texttt{hh\_income} & renda familiar & Soma de todas as rendas da família\\
+\texttt{hh\_income\_exp} & despesa total & Soma das despesas da família\\
+\texttt{locnasc} & nascimento hospitalar / domiciliar & Local do nascimento\\
+\texttt{mesprenat} & início do pré-natal & Mês em que iniciou o pré-natal\\
+\texttt{qtd\_comodos\_domic\_fam\_eq} & cômodos no domicílio & Quantidade de cômodos do domicílio\\
+\texttt{qtd\_familias\_domic\_fam} & famílias no domicílio & Quantidade de famílias no domicílio\\
+\texttt{primeiraGestacao} & primeira gestação & Sem nenhum filho vivo, sem perda fetal anterior e primeira gestação\\
+\texttt{perdaFetalAnterior} & perda fetal anterior & Já perdeu alguma gestação\\
+\texttt{partoCesarioAnterior} & parto cesáreo anterior & Já fez alguma cesariana\\
+\texttt{partoNormalApenas} & apenas partos normais & Já teve filhos, mas de parto normal\\
+\texttt{racacor\_cidacs} & raça/cor & Raça/cor da criança\\
+\texttt{racacor\_cidacs\_M} & mãe indígena & Raça/cor da mãe\\
+\texttt{social\_assistence\_M} & assistência social & Mãe teve alguma assistência social\\
+\texttt{tpnascassi} & parto assistido por médico & Quem ajudou no parto\\
+\texttt{val\_desp\_agua\_esgoto\_fam\_eq} & despesa com água/esgoto & Valor gasto com água e esgoto\\
+\texttt{val\_desp\_alimentacao\_fam\_eq} & despesa com alimentação & Valor gasto com alimentação\\
+\texttt{val\_desp\_aluguel\_fam\_eq} & despesa com aluguel & Valor gasto com aluguel\\
+\texttt{val\_desp\_gas\_fam\_eq} & despesa com gás & Valor gasto com gás\\
+\texttt{val\_desp\_energia\_fam\_eq} & despesa com energia & Valor gasto com energia\\
+\texttt{val\_desp\_medicamentos\_fam\_eq} & despesa com medicamentos & Valor gasto com medicamentos\\
+\texttt{val\_desp\_transpor\_fam\_eq} & despesa com transporte & Valor gasto com transporte\\
+--- & parentesco & Parentesco com a pessoa responsável pela família\\
+\end{longtable}
+}
+
+%%---------------------------------------------------------------------%%
+\subsection{Desfechos}\label{subsec:met-desfechos}
+%%---------------------------------------------------------------------%%
+
+Foram analisados quatro desfechos neonatais adversos, cada um tratado como um rótulo binário (presente ou ausente) por recém-nascido: baixo peso ao nascer, definido como peso inferior a 2.500~g \cite{who2024lbw}; nascimento pré-termo, definido como idade gestacional inferior a 37 semanas completas; malformação congênita, definida pela presença de anomalia congênita registrada na declaração de nascido vivo; e Apgar baixo, definido como índice de Apgar inferior a 7 no quinto minuto. Cada desfecho foi analisado de forma independente.
+
+%%---------------------------------------------------------------------%%
+\subsection{Populações analisadas}\label{subsec:met-populacoes}
+%%---------------------------------------------------------------------%%
+
+A análise foi conduzida em oito populações: o recorte geral, usado como referência, e sete segmentos socioeconomicamente vulneráveis, obtidos por filtros aplicados à base. Os segmentos são: municípios de até 10 mil habitantes; população rural; população indígena; população quilombola; beneficiárias do Programa Bolsa Família; mães com baixa escolaridade; e mães com menos de 15 anos. Cada população foi analisada separadamente e possui a sua própria prevalência basal do desfecho, valor de referência contra o qual se mede o risco relativo dos subgrupos daquele segmento. A combinação dos quatro desfechos com as oito populações resulta em 32 análises independentes.
+
+
+%%---------------------------------------------------------------------%%
+\subsection{Descoberta de subgrupos}\label{subsec:met-ssdp}
+%%---------------------------------------------------------------------%%
+
+Um subgrupo é um subconjunto da população definido por uma combinação de características, no qual a ocorrência do desfecho se afasta de forma marcante da observada na população como um todo. Por exemplo, o subconjunto dos recém-nascidos cujas mães realizaram de 1 a 3 consultas de pré-natal constitui um subgrupo: reúne todos os indivíduos que satisfazem essa descrição e, entre eles, a taxa de baixo peso ao nascer é substancialmente maior que a do conjunto como um todo. Um subgrupo é tão mais relevante quanto maior for esse desvio e quanto mais exemplos ele abranger.
+
+%A descoberta de subgrupos é uma tarefa de mineração de dados que busca, de forma automática, as descrições mais relevantes \cite{atzmueller2015}. 
+Cada subgrupo é representado por uma regra da forma $\mathit{cond} \rightarrow \mathit{alvo}$, em que $\mathit{cond}$ é a conjunção de características que o define (por exemplo, ``consultas: 1--3 $\wedge$ primeira gestação: sim'') e $\mathit{alvo}$ é o desfecho analisado. Cada característica é um par atributo--valor formado a partir dos atributos da Tabela~\ref{tab:met-atributos}.
+
+A Tabela~\ref{tab:met-exemplo} ilustra a tarefa em um conjunto mínimo, em que o alvo é a melhora do paciente. A descrição ``condição: diabético $\wedge$ tratamento: medicamento A'' define um subgrupo com dois pacientes, ambos com melhora, ao passo que, no conjunto completo, apenas metade dos pacientes melhora. O subgrupo concentra as ocorrências do alvo e, por isso, é considerado relevante.
+
+\begin{table}[h!]
+\centering
+\caption{Exemplo de base de dados para a tarefa de descoberta de subgrupos.}\label{tab:met-exemplo}%
+\tabcompacta
+\begin{tabular}{@{}lL{2.2cm}cL{2.6cm}L{2.4cm}@{}}
+\toprule
+Paciente & Condição & Sexo & Tratamento & Resultado\\
+\midrule
+$e_{1}$ & Diabético & M & Medicamento A & melhora\\
+$e_{2}$ & Diabético & F & Medicamento A & melhora\\
+$e_{3}$ & Diabético & M & Medicamento B & não melhora\\
+$e_{4}$ & Hipertenso & M & Medicamento B & não melhora\\
+$e_{5}$ & Hipertenso & M & Medicamento A & melhora\\
+$e_{6}$ & Hipertenso & F & Medicamento B & não melhora\\
+$e_{7}$ & Saudável & F & Medicamento B & melhora\\
+$e_{8}$ & Saudável & F & Medicamento B & não melhora\\
+$e_{9}$ & Saudável & M & Medicamento A & melhora\\
+$e_{10}$ & Saudável & F & Medicamento A & não melhora\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%Diferentemente da mineração de regras de associação, que procura padrões válidos para todo o conjunto, a descoberta de subgrupos concentra-se em segmentos específicos, o que a torna adequada a bases de alta dimensionalidade.
+
+A relevância de um subgrupo $s$ pode ser medida pela acurácia relativa ponderada (\emph{Weighted Relative Accuracy}, WRAcc), dada pela Equação~\ref{eq:wracc}
+
+\begin{equation}\label{eq:wracc}
+\mathrm{WRAcc}(s) = cobertura(s) \times \left(confiança(s) - confiança(dataset)\right),
+\end{equation}
+onde $cobertura(s)$ é o número de registros no subgrupo $s$, $confiança(s)$ é o percentual de registro de $s$ pertencentes ao alvo e  $confiança(dataset)$ é presença do alvo na base de dados completa. 
+Assim, o primeiro fator ($cobertura(s)$) pondera a cobertura do subgrupo e o segundo ($\times \left(confiança(s) - confiança(dataset)\right)$) mede o quanto a sua taxa do desfecho se afasta da taxa geral.
+
+
+Encontrar os subgrupos de maior WRAcc numa base de dados com muitos atributos é uma tarefa de busca complexa.
+Isso porque é computacionamente custoso, ou mesmo inviável, testar todas as possibilidades de subgrupos.
+No entanto, alguns algoritmos de Inteligência Artificial já foram propostos para encontrar subgrupos relevantes sem a necessidade de testar todas as opções.
+
+Um deles é o SSDP+, um algoritmo evolutivo de descoberta de subgrupos voltado a dados com muitos atributos \cite{lucas2018}.
+O SSDP+ possui três parâmetros principais: (1) métrica de avaliação (usamos o WRAcc), (2) número de subgrupos retornados (usamos o valor 5) e um parâmetro de diversidade (valor padrão 0.5), que força o retorno de subgrupos que cubram diferentes exemplos da base de dados.
+
+A busca dos subgrupos foi feita utilizando o SSDP+ para cada desfechos (baixo peso, prematuridade, malformação e apgar baixo) e em cada uma das oito populações (unicípios de até 10 mil habitantes; população rural; população indígena; população quilombola; beneficiárias do Programa Bolsa Família; mães com baixa escolaridade; e mães com menos de 15 anos), resultando em $32$ buscas independentes. 
+
+Para cada um dos cinco subgrupos retornado nos $32$ contextos de busca, nós reportamos a cobertura (total de recém-nascidos e sua participação no segmento), o número de ocorrências do desfecho (absoluto e relativo) e o \emph{lift}, que é a razão entre a prevalência do desfecho no subgrupo e a prevalência basal do segmento (Equação~\ref{eq:lift}).
+
+\begin{equation}\label{eq:lift}
+\mathrm{lift}(s) = \frac{TP/(TP + FP)}{|D^{+}|/|D|},
+\end{equation}
+de modo que um \emph{lift} de 1,25 indica prevalência 25\% acima da basal daquele segmento. Como as regras são conjunções de atributos, o \emph{lift} reflete o efeito conjunto das características que compõem o subgrupo, e não o de nenhuma delas isoladamente.
+
+
+%%---------------------------------------------------------------------%%
+\subsection{Painel de visualização}\label{subsec:met-dashboard}
+%%---------------------------------------------------------------------%%
+
+Para tornar os resultados acessíveis a gestores e profissionais de saúde, os subgrupos retornados foram disponibilizados em um painel interativo. A construção seguiu quatro etapas. Primeiro, os arquivos gerados pelas execuções do SSDP+ foram consolidados e tratados por rotinas em Python, que uniformizaram as descrições das regras e associaram cada resultado ao seu desfecho e ao seu recorte. Em seguida, os dados consolidados foram convertidos em comandos de inserção e carregados em um banco de dados relacional PostgreSQL. A terceira etapa consistiu no desenvolvimento de uma API REST, em Java com Spring Boot, responsável por servir as consultas do painel. Por fim, a interface foi implementada em HTML, CSS e JavaScript, a partir de protótipos elaborados no Figma e de princípios de narrativa com dados \cite{knaflic2015}.
+
+O painel permite selecionar o desfecho e o recorte e exibe, para a combinação escolhida, os subgrupos retornados com a sua cobertura e o seu risco relativo, ao lado dos totais do recorte. Dessa forma, informações que exigiriam o processamento manual de dezenas de arquivos ficam disponíveis em uma única consulta, o que favorece comparações entre recortes e a tomada de decisão baseada em dados. 
+Além dos recortes populacionais descritos neste artigo, o paineil incluiu também recortes populacionais por cidade brasileira em que houve mais de 10 casos dos desfeixos considerados.

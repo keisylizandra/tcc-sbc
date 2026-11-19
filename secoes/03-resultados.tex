@@ -1,0 +1,37 @@
+%% secoes/03-resultados.tex — incluído por main.tex
+
+%%=====================================================================%%
+\section{Resultados}\label{sec:resultados}
+%%=====================================================================%%
+
+A análise foi feita separadamente para cada um dos quatro desfechos: baixo peso ao nascer, nascimento pré-termo, malformação congênita e Apgar baixo no quinto minuto. 
+Cada subgrupo é descrito por uma conjunção de atributos. As tabelas trazem, para cada regra: o total de nascimentos abrangidos (Total) e sua participação no total do segmento (Total \%); o número de ocorrências do desfecho no conjunto (Nº de ocorrências) e sua participação no total de ocorrências do segmento (Nº de ocorrências \%); e o lift em relação à prevalência basal do segmento.
+
+%O total de nascimentos considerado em cada desfecho é apresentado na respectiva tabela de distribuição e serve de base para os percentuais de cada subgrupo. Para cada desfecho, os resultados de cada população são descritos em uma subseção própria, considerando apenas os subgrupos daquela população. A comparação entre as populações é feita ao final, em uma subseção de análise geral do desfecho.
+
+%%---------------------------------------------------------------------%%
+%% Subseções dos resultados, um arquivo por desfecho.                  %%
+%% Caminhos relativos à pasta do manuscrito, não à deste arquivo.      %%
+%%---------------------------------------------------------------------%%
+
+\input{secoes/resultados/01-baixo-peso}
+\input{secoes/resultados/02-pre-termo}
+\input{secoes/resultados/03-malformacao}
+\input{secoes/resultados/04-apgar}
+
+\subsection{Painel de Visualização}
+
+Os subgrupos das 32 análises, além dos recortes por município, estão disponíveis no painel interativo descrito na Seção~\ref{subsec:met-dashboard}, acessível em \url{https://desfechos-neonatais.vercel.app/}. A Figura~\ref{fig:painel-caruaru} mostra a tela de consulta por município, tendo Caruaru (PE) como exemplo e o baixo peso ao nascer como desfecho.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{painel-caruaru}
+\caption{Painel de visualização: subgrupos de baixo peso ao nascer no município de Caruaru (PE).}\label{fig:painel-caruaru}
+\end{figure}
+
+A navegação é feita por dois seletores, na barra lateral. O primeiro escolhe o desfecho (baixo peso, prematuridade, malformação ou Apgar no quinto minuto inferior a 7); o segundo escolhe a população, entre o recorte geral, os sete segmentos vulneráveis e a busca por município. Feita a escolha, o topo da tela resume a população selecionada em quatro indicadores: o nome do recorte, o total de nascimentos e quantos deles apresentaram ou não o desfecho. Em Caruaru, foram 12.091 nascimentos, dos quais 798 com baixo peso, o que corresponde a uma prevalência basal de 6,60\%.
+
+Abaixo dos indicadores, a tabela de análise dos subgrupos lista as regras retornadas para aquela população. Para cada regra, informa o número de nascimentos com e sem o desfecho e o aumento da taxa em relação à prevalência basal do recorte, que corresponde ao \emph{lift} menos um, expresso em porcentagem. A tabela pode ser ordenada por qualquer coluna e filtrada por texto, de modo que o usuário localize, por exemplo, todas as regras que envolvem o número de consultas. Ao lado, dois gráficos de barras mostram os totais absolutos do recorte e a proporção de nascimentos com e sem o desfecho, comparada à do recorte geral.
+
+O exemplo de Caruaru reproduz, em escala municipal, o padrão observado no baixo peso ao nascer em todo o país. O número de consultas de pré-natal aparece em seis das dez regras e está presente nas seis de maior risco. O subgrupo de maior risco reúne mãe solteira e 1 a 3 consultas: são 313 nascimentos, 59 deles com baixo peso, o que equivale a uma prevalência de 18,85\%, 186\% acima da basal do município (\emph{lift} de 2,86). A faixa de 1 a 3 consultas combinada à presença de banheiro no domicílio vem em seguida (135\% acima da basal), e as regras com a faixa de 4 a 6 consultas ficam entre 64\% e 77\% acima da basal. Assim, um gestor municipal pode identificar, em uma única consulta, que as gestantes com pré-natal incompleto, em especial as sem companheiro, são o grupo prioritário para ações de busca ativa no seu território.
+

@@ -1,0 +1,171 @@
+%% secoes/resultados/02-pre-termo.tex — incluído por main.tex
+
+%%---------------------------------------------------------------------%%
+\subsection{Nascimento pré-termo}\label{subsec:res-pt}
+%%---------------------------------------------------------------------%%
+
+A Tabela~\ref{tab:pt-dist} mostra a distribuição do nascimento pré-termo nas oito populações. No recorte geral, a prevalência basal do desfecho foi de 10,83\%, bem acima da observada para o baixo peso ao nascer (7,25\%).
+
+Diferentemente do que se viu no baixo peso ao nascer, aqui as maiores prevalências recaem sobre os segmentos socialmente mais vulneráveis: mães menores de 15 anos (17,26\%) e população indígena (15,43\%) apresentam os dois maiores valores, seguidas por mães com baixa escolaridade (12,77\%) e população quilombola (11,70\%), todas acima do recorte geral. Apenas três segmentos ficaram abaixo dela, sendo eles: municípios de até 10 mil habitantes (10,43\%), população rural (10,77\%) e beneficiárias do Bolsa Família (10,80\%).
+
+\begin{table}[h]
+\caption{Distribuição do nascimento pré-termo por população analisada.}\label{tab:pt-dist}%
+\begin{tabularx}{\textwidth}{@{}Yrrrr@{}}
+\toprule
+População & Total & \makecell{Total\\(\%)} & \makecell{Nº de\\ocorrências} & \makecell{Ocorrências\\(\%)}\\
+\midrule
+Recorte geral & 5.019.773 & 100,00 & 543.714 & 10,83\\
+Municípios até 10 mil hab. & 412.208 & 8,21 & 43.012 & 10,43\\
+Rural & 1.065.151 & 21,22 & 114.747 & 10,77\\
+Indígena & 43.650 & 0,87 & 6.736 & 15,43\\
+Quilombola & 23.609 & 0,47 & 2.762 & 11,70\\
+Mães com baixa escolaridade & 194.533 & 3,88 & 24.843 & 12,77\\
+Mães menores de 15 anos & 25.208 & 0,50 & 4.351 & 17,26\\
+Beneficiárias do Bolsa Família & 1.169.568 & 23,30 & 126.355 & 10,80\\
+\bottomrule
+\end{tabularx}
+%\fontetabela
+\end{table}
+
+
+A Tabela~\ref{tab:pt} apresenta os cinco subgrupos de maior WRAcc para o nascimento pré-termo nos oito recortes analisados.
+Podemos observar que o número de consultas de pré-natal é o item dominante em quase toda a análise: aparece entre os cinco primeiros subgrupos dos oito segmentos e, em sete deles, define isoladamente ou acompanha a maior parte das regras. Isolada, a faixa de 1 a 3 consultas é o item de maior risco em sete dos oito segmentos, de 60\% acima da basal entre mães com baixa escolaridade a 103\% em municípios de até 10 mil habitantes, e fica sempre acima da faixa de 4 a 6 consultas isolada (entre 21\% e 46\% acima da basal). A exceção é a população indígena, em que o nascimento domiciliar isolado (47\%) supera a faixa de 1 a 3 consultas (43\%). Ainda assim, mesmo a faixa de 4 a 6 consultas eleva a prevalência acima da basal em todos os segmentos em que figura isoladamente.
+
+
+\begin{table}[p]
+\centering
+\caption{Subgrupos para nascimento pré-termo segundo estratos populacionais (prevalência basal: 10,83\%).}
+\label{tab:pt}
+
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{tabularx}{\textwidth}{@{}c Y r r r r r@{}}
+\toprule
+\textbf{\#} & \textbf{Subgrupo} & \textbf{Total} & \textbf{\makecell[r]{Total\\(\%)}} & \textbf{\makecell[r]{Nº de\\ocorr.}} & \textbf{\makecell[r]{Ocorr.\\(\%)}} & \textbf{Lift} \\
+\midrule
+\secaotabela{Recorte geral}
+1 & consultas: 4--6 & 1.579.447 & 31,5 & 230.225 & 42,3 & 1,35 \\
+2 & consultas: 1--3 & 401.528 & 8,0 & 81.460 & 15,0 & 1,87 \\
+3 & consultas: 4--6; escoamento sanitário: rede coletora & 586.721 & 11,7 & 90.566 & 16,7 & 1,43 \\
+4 & consultas: 4--6; primeira gestação: sim & 377.450 & 7,5 & 66.202 & 12,2 & 1,62 \\
+5 & consultas: 4--6; famílias no domicílio: 1 ou menos; parto cesárea & 607.040 & 12,1 & 91.066 & 16,7 & 1,39 \\
+
+\secaotabela{Municípios de até 10 mil habitantes}
+6 & consultas: 4--6 & 117.629 & 28,5 & 17.886 & 41,6 & 1,46 \\
+7 & consultas: 1--3 & 24.072 & 5,8 & 5.105 & 11,9 & 2,03 \\
+8 & consultas: 4--6; primeira gestação: sim & 30.450 & 7,4 & 5.451 & 12,7 & 1,72 \\
+9 & consultas: 4--6; despesa com energia: 20--56 & 43.846 & 10,6 & 6.769 & 15,7 & 1,48 \\
+10 & consultas: 4--6; despesa com alimentação: 100--300 & 46.984 & 11,4 & 7.059 & 16,4 & 1,44 \\
+
+\secaotabela{População rural}
+11 & consultas: 4--6 & 375.121 & 35,2 & 52.767 & 46,0 & 1,31 \\
+12 & consultas: 1--3 & 104.341 & 9,8 & 20.392 & 17,8 & 1,81 \\
+13 & consultas: 4--6; primeira gestação: sim & 86.128 & 8,1 & 14.764 & 12,9 & 1,59 \\
+14 & consultas: 4--6; escolaridade materna: até o 5º ano & 135.955 & 12,8 & 20.042 & 17,5 & 1,37 \\
+15 & consultas: 4--6; despesa com alimentação: 0--100 & 148.332 & 13,9 & 20.867 & 18,2 & 1,31 \\
+
+\secaotabela{População indígena}
+16 & consultas: 1--3 & 9.548 & 21,9 & 2.109 & 31,3 & 1,43 \\
+17 & nascimento domiciliar & 8.010 & 18,4 & 1.821 & 27,0 & 1,47 \\
+18 & parto normal; mãe indígena; Bolsa Família: não & 20.171 & 46,2 & 3.485 & 51,7 & 1,12 \\
+19 & consultas: 1--3; despesa com alimentação: 0--100 & 3.761 & 8,6 & 896 & 13,3 & 1,54 \\
+20 & despesa com alimentação: 0--100; parto normal; mãe indígena & 9.974 & 22,8 & 1.849 & 27,4 & 1,20 \\
+
+\secaotabela{População quilombola}
+21 & consultas: 1--3 & 2.894 & 12,3 & 615 & 22,3 & 1,82 \\
+22 & consultas: 4--6 & 9.424 & 39,9 & 1.335 & 48,3 & 1,21 \\
+23 & consultas: 4--6; escolaridade materna: até o 5º ano & 3.338 & 14,1 & 536 & 19,4 & 1,37 \\
+24 & consultas: 1--3; escolaridade materna: até o 5º ano & 1.156 & 4,9 & 277 & 10,0 & 2,05 \\
+25 & parto normal; escolaridade materna: até o 5º ano & 5.595 & 23,7 & 791 & 28,6 & 1,21 \\
+
+\secaotabela{Mães com baixa escolaridade}
+26 & consultas: 4--6 & 71.814 & 36,9 & 11.195 & 45,1 & 1,22 \\
+27 & consultas: 1--3 & 25.484 & 13,1 & 5.214 & 21,0 & 1,60 \\
+28 & consultas: 4--6; idade materna menor que 20 anos & 20.486 & 10,5 & 3.877 & 15,6 & 1,48 \\
+29 & domicílio particular permanente; idade materna menor que 20 anos & 52.109 & 26,8 & 7.665 & 30,9 & 1,15 \\
+30 & consultas: 4--6; cômodos no domicílio: 5--6 & 26.247 & 13,5 & 4.204 & 16,9 & 1,25 \\
+
+\secaotabela{Mães menores de 15 anos}
+31 & consultas: 1--3 & 2.866 & 11,4 & 888 & 20,4 & 1,80 \\
+32 & consultas: 4--6 & 9.662 & 38,3 & 2.034 & 46,7 & 1,22 \\
+33 & parto normal; primeira gestação: sim & 10.801 & 42,8 & 2.169 & 49,9 & 1,16 \\
+34 & consultas: 4--6; parentesco: neto(a); parto normal & 3.693 & 14,7 & 889 & 20,4 & 1,39 \\
+35 & consultas: 4--6; parto assistido por médico; primeira gestação: sim & 3.385 & 13,4 & 789 & 18,1 & 1,35 \\
+
+\secaotabela{Beneficiárias do Programa Bolsa Família}
+36 & consultas: 4--6 & 372.685 & 31,9 & 53.581 & 42,4 & 1,33 \\
+37 & consultas: 1--3 & 87.002 & 7,4 & 17.530 & 13,9 & 1,87 \\
+38 & consultas: 4--6; calçamento do domicílio: total & 146.603 & 12,5 & 21.920 & 17,3 & 1,38 \\
+39 & consultas: 4--6; parto cesárea & 146.930 & 12,6 & 21.948 & 17,4 & 1,38 \\
+30 & consultas: 4--6; material do domicílio: tijolo/alvenaria; sexo: M & 141.617 & 12,1 & 21.235 & 16,8 & 1,39 \\
+\bottomrule
+\end{tabularx}
+%\fontetabela
+\end{table}
+
+
+%No recorte geral, o número de consultas aparece nos cinco subgrupos, em quatro na faixa de 4 a 6 (subgrupos 1, 3, 4 e 5) e em um na faixa de 1 a 3 (subgrupo 2). Os demais itens ocorrem uma vez cada.
+
+%O subgrupo 2, definido apenas por 1 a 3 consultas, apresenta o maior risco do desfecho da tabela (87\% acima da basal). O subgrupo 1, definido apenas por 4 a 6 consultas, tem o menor risco do desfecho (35\% acima da basal) e a maior participação nas ocorrências (42,3\%); a menor participação nas ocorrências é a do subgrupo 4 (12,2\%).
+
+%Os subgrupos 1, 3, 4 e 5 compartilham a faixa de 4 a 6 consultas e diferem nos demais itens, com risco 35\%, 43\%, 62\% e 39\% acima da basal. A comparação entre os subgrupos 1 e 4, que diferem pela adição da primeira gestação, mostra o risco passando de 35\% para 62\% acima da basal e a prevalência de 14,58\% para 17,54\%, com queda da participação nas ocorrências de 42,3\% para 12,2\%.
+
+%10k
+%Nos municípios de até 10 mil habitantes o número de consultas aparece nos cinco subgrupos, na faixa de 4 a 6 em quatro (6, 8, 9 e 10) e na faixa de 1 a 3 em um (subgrupo 7). A primeira gestação figura no subgrupo 8 e itens de despesa domiciliar nos subgrupos 9 e 10.
+
+%O subgrupo 7, definido apenas por 1 a 3 consultas, apresenta o maior risco entre as regras de um único item de todo o pré-termo (103\% acima da basal) e a menor participação nas ocorrências da tabela (11,9\%). O subgrupo 6, definido apenas por 4 a 6 consultas, tem a maior participação nas ocorrências (41,6\%). Fora do subgrupo 7, o risco varia pouco, entre 44\% e 72\% acima da basal.
+
+%Os subgrupos 6 e 8 diferem pela adição da primeira gestação, que eleva a prevalência de 15,21\% para 17,90\%, de 46\% para 72\% acima da basal, com queda da participação nas ocorrências de 41,6\% para 12,7\%.
+
+%Rural
+%Na população rural o número de consultas aparece nos cinco subgrupos, na faixa de 4 a 6 em quatro (11, 13, 14 e 15) e na faixa de 1 a 3 em um (subgrupo 12). Escolaridade materna, primeira gestação e despesa com alimentação acompanham a faixa de 4 a 6 em três subgrupos.
+
+%O subgrupo 12 (1 a 3 consultas) apresenta o maior risco do desfecho (81\% acima da basal); os subgrupos 11 e 15 apresentam o menor (31\% acima da basal), e o subgrupo 11 tem a maior participação nas ocorrências da tabela (46,0\%).
+
+%Os subgrupos 11 e 13 diferem pela adição da primeira gestação, que eleva a prevalência de 14,07\% para 17,14\%, de 31\% para 59\% acima da basal, reduzindo a participação nas ocorrências de 46,0\% para 12,9\%.
+
+%indígena
+%A população indígena é o único segmento em que o número de consultas não domina os cinco primeiros subgrupos: aparece em dois deles, ambos na faixa de 1 a 3 (subgrupos 16 e 19). Os demais são definidos por nascimento domiciliar (2), pela conjunção de parto normal, mãe indígena e ausência de Bolsa Família (3) e por despesa com alimentação combinada a parto normal e mãe indígena (5).
+
+%O subgrupo 4 (16 a 18 consultas somadas a despesa com alimentação) apresenta o maior risco do desfecho da tabela (54\% acima da basal). O subgrupo 18 tem o menor risco do desfecho (12\% acima da basal) e, ao mesmo tempo, a maior participação nas ocorrências de toda a análise (51,7\%), abrangendo mais da metade dos casos do segmento.
+
+%O risco associado à faixa de 1 a 3 consultas neste segmento (43\% acima da basal, subgrupo 16) é o menor observado para essa faixa entre todos os segmentos, assim como já ocorrera no baixo peso ao nascer.
+
+%Na população quilombola o número de consultas aparece em quatro dos cinco subgrupos (21, 22, 23 e 24), em faixas distintas; a escolaridade materna acompanha três regras (23, 24 e 25).
+
+%O subgrupo 24 (1 a 3 consultas somadas à escolaridade materna até o 5º ano) apresenta o maior risco do desfecho entre todos os subgrupos apresentados neste estudo para o pré-termo (105\% acima da basal), com prevalência de 23,96\%, e a menor participação nas ocorrências de todos os conjuntos (10,0\%). O subgrupo 22 (4 a 6 consultas) tem o menor risco do desfecho (21\% acima da basal), compartilhada com o subgrupo 25, e a maior participação nas ocorrências da tabela (48,3\%).
+
+%As duas comparações de item único reforçam o efeito da escolaridade: sobre a faixa de 1 a 3 consultas, sua adição eleva o risco acima da basal de 82\% (subgrupo 21) para 105\% (subgrupo 4); sobre a faixa de 4 a 6, de 21\% (subgrupo 22) para 37\% (subgrupo 23).
+
+%Nas mães com baixa escolaridade o número de consultas aparece em quatro dos cinco subgrupos (26, 27, 28 e 30), na faixa de 4 a 6 em três (26, 28 e 30) e na faixa de 1 a 3 em um (subgrupo 27). A idade materna inferior a 20 anos figura em dois subgrupos (28 e 29).
+
+%O subgrupo 27 (1 a 3 consultas) apresenta o maior risco do desfecho (60\% acima da basal); o subgrupo 29, único dos cinco sem o número de consultas, apresenta o menor (15\% acima da basal). A maior participação nas ocorrências é a do subgrupo 26 (45,1\%), definido apenas por 4 a 6 consultas.
+
+%A comparação entre os subgrupos 26 e 28 mostra que a adição da idade materna inferior a 20 anos eleva a prevalência de 15,59\% para 18,93\%, de 22\% para 48\% acima da basal.
+
+%As mães menores de 15 anos é o segmento com a maior prevalência basal entre os oito analisados (17,26\%). O número de consultas aparece em quatro dos cinco subgrupos (31, 32, 34 e 35) e o parto normal em dois (33 e 34).
+
+%O subgrupo 31, definido apenas por 1 a 3 consultas, apresenta o maior risco do desfecho da tabela (80\% acima da basal) e a maior prevalência absoluta entre todos os subgrupos do pré-termo (30,98\%). O subgrupo 33 (parto normal e primeira gestação) tem o menor risco do desfecho (16\% acima da basal) e a maior participação nas ocorrências (49,9\%); a menor participação nas ocorrências é a do subgrupo 35 (18,1\%).
+
+%Os subgrupos 34 e 35, que somam à faixa de 4 a 6 consultas outros itens, apresentam risco 39\% e 35\% acima da basal, superiores ao da faixa de 4 a 6 isolada (subgrupo 32, 22\%).
+
+%Os beneficiárias do Bolsa Família é o segmento com o maior número de nascimentos (1.169.568). O número de consultas aparece nos cinco subgrupos, na faixa de 4 a 6 em quatro (36, 38, 39 e 40) e na faixa de 1 a 3 em um (subgrupo 37).
+
+%O subgrupo 37 (1 a 3 consultas) apresenta o maior risco do desfecho (87\% acima da basal) e a menor participação nas ocorrências (13,9\%); o subgrupo 36 (4 a 6 consultas), o menor risco do desfecho (33\% acima da basal) e a maior participação nas ocorrências (42,4\%).
+
+%Os subgrupos 38, 39 e 40 somam à faixa de 4 a 6 consultas itens de infraestrutura domiciliar e características do parto, com risco muito próximo entre si (38\%, 38\% e 39\% acima da basal) e pouco acima do subgrupo 36. O conjunto de itens coincide parcialmente com o do recorte geral, onde também figuram o número de consultas e o parto cesárea.
+
+%Considerando os oito segmentos (Tabela˜\ref{tab:pt}), podemos observar que o número de consultas de pré-natal é o item dominante em quase toda a análise: aparece entre os cinco primeiros subgrupos dos oito segmentos e, em sete deles, define isoladamente ou acompanha a maior parte das regras. Isolada, a faixa de 1 a 3 consultas é o item de maior risco em sete dos oito segmentos, de 60\% acima da basal entre mães com baixa escolaridade a 103\% em municípios de até 10 mil habitantes, e fica sempre acima da faixa de 4 a 6 consultas isolada (entre 21\% e 46\% acima da basal). A exceção é a população indígena, em que o nascimento domiciliar isolado (47\%) supera a faixa de 1 a 3 consultas (43\%). Ainda assim, mesmo a faixa de 4 a 6 consultas eleva a prevalência acima da basal em todos os segmentos em que figura isoladamente.
+ 
+A população indígena é a exceção, sendo o único segmento em que o número de consultas não domina os cinco primeiros subgrupos, aparecendo em apenas dois deles. O risco associado à faixa de 1 a 3 consultas nesse segmento (43\% acima da basal) é o menor observado para essa faixa entre todos os segmentos, assim como já ocorrera no baixo peso ao nascer. É também nele que está a regra com a maior participação nas ocorrências de toda a análise (subgrupo 18, com 51,7\% dos casos).
+ 
+A regra formada apenas pela faixa de 4 a 6 consultas e pela primeira gestação aparece em três recortes e, em todos, eleva o risco em relação à faixa de 4 a 6 isolada: de 35\% para 62\% no recorte geral, de 46\% para 72\% nos municípios de até 10 mil habitantes e de 31\% para 59\% na população rural. A escolaridade materna até o 5º ano acompanha a faixa de 4 a 6 consultas na população rural (37\%) e na quilombola (37\%), e a idade materna inferior a 20 anos figura apenas entre mães com baixa escolaridade.
+ 
+Entre as regras compostas por um único item, a faixa de 1 a 3 consultas nos municípios de até 10 mil habitantes apresenta o maior risco do pré-termo (103\% acima da basal). 
+Considerando todas as regras, o maior risco relativo para o pré-termo é o do subgrupo 24 da população quilombola (1 a 3 consultas e escolaridade materna até o 5º ano, 105\% acima da basal), que também tem a menor participação nas ocorrências entre todos os conjuntos (10,0\%). Já a maior prevalência absoluta em um subgrupo está entre as mães menores de 15 anos, segmento de maior prevalência basal (17,26\%): no subgrupo definido apenas por 1 a 3 consultas, 30,98\% dos nascimentos são pré-termo, com risco 80\% acima da basal.
+ 
+Por fim, as beneficiárias do Bolsa Família, segmento com o maior número de nascimentos (1.169.568), têm um conjunto de itens que coincide parcialmente com o do recorte geral, onde também figuram o número de consultas e o parto cesáreo.
+
+\FloatBarrier
