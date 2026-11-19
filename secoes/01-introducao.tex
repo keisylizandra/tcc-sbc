@@ -5,7 +5,7 @@
 %%=====================================================================%%
 
 O período neonatal concentra a maior parcela da mortalidade infantil \cite{unigme2024}. 
-No ano de 2023, 4,8 milhões de crianças que morreram antes dos cinco anos no mundo, sendo 2,3 milhões delas recém-nascidos \cite{unigme2024}. 
+No ano de 2023, 4,8 milhões de crianças morreram antes dos cinco anos no mundo, sendo 2,3 milhões delas recém-nascidos \cite{unigme2024}. 
 Mais do que um período de risco elevado, é a janela em que se assentam as bases da sobrevivência e do desenvolvimento, de modo que as condições em que uma criança nasce repercutem ao longo de toda a sua vida \cite{lawn2014}. Nesse cenário, os desfechos neonatais adversos, eventos que sinalizam comprometimento da saúde já no nascimento, funcionam como indicadores sensíveis de saúde \cite{lawn2014}.
 Este trabalho trata de quatro desfechos neonatais adversos: baixo peso ao nascer, nascimento pré-termo, malformação congênita e Apgar baixo no quinto minuto.
 
@@ -28,15 +28,6 @@ Este trabalho trata de quatro desfechos neonatais adversos: baixo peso ao nascer
 %\subsection{Objetivo e organização do trabalho}\label{subsec:intro-objetivo}
 %%---------------------------------------------------------------------%%
 
-Apesar de já existir uma extensa literaura sobre desfechos neonatais adversos, os fatores associados a eles seguem pouco elucidados em populações socioeconomicamente mais vulneráveis, como indígenas, quilombolas, moradores de pequenas cidades ou da zona rural e mulheres de jovens ou de baixa escolaridade. 
-%Tais grupos não homogêneos e necessitam de estudos e olhares específicos. 
-Em geral, essas populações entram nos estudos como variáveis de ajuste de um modelo único, e não como recortes analisados separadamente, cada um com a sua própria prevalência de referência. Além disso, os desfechos costumam ser estudados um de cada vez, o que dificulta identificar quais fatores são comuns a vários deles e quais são próprios de cada um.
-
-Diante disso, o objetivo deste trabalho é identificar, através de uma técnica de inteligência artificial, a combinações de características associadas a maior ocorrência dos quatro desfechos em oito recortes de populações socioeconomicamente vulneráveis do Brasil, são eles: municípios de até 10 mil habitantes, população rural, indígena e quilombola, beneficiárias do Programa Bolsa Família, mães com baixa escolaridade e mães com menos de 15 anos.
+O objetivo deste trabalho é identificar, por meio de descoberta de subgrupos, uma técnica de mineração de dados, as combinações de características associadas a maior ocorrência dos quatro desfechos em populações socioeconomicamente vulneráveis do Brasil. Para isso, foi utilizada a Coorte de 100 Milhões de Brasileiros vinculada ao SINASC, base que reúne, para famílias de baixa renda inscritas no Cadastro Único, os dados do nascimento, da mãe, do domicílio e do recebimento do Bolsa Família \cite{pita2018}. Após o tratamento dos dados, a base analisada ficou com 5.242.215 recém-nascidos entre 2011 e 2015, descritos por 42 atributos. Sobre ela, aplicou-se o SSDP+, um algoritmo evolutivo para essa tarefa \cite{lucas2018}, que retorna regras legíveis, como ``1 a 3 consultas de pré-natal e primeira gestação'', que descrevem os grupos em que o desfecho é mais frequente. A busca foi feita para cada um dos quatro desfechos em oito populações: o recorte geral, usado como referência, e sete segmentos vulneráveis (municípios de até 10 mil habitantes, população rural, indígena e quilombola, beneficiárias do Programa Bolsa Família, mães com baixa escolaridade e mães com menos de 15 anos), totalizando 32 análises. Os subgrupos encontrados foram ainda disponibilizados em um painel interativo de visualização.
 
 %Para isso, aplica-se o algoritmo SSDP+ à Coorte de 100 Milhões de Brasileiros vinculada ao SINASC. A análise abrange o recorte geral, como referência, e sete segmentos vulneráveis: municípios de até 10 mil habitantes, população rural, indígena e quilombola, beneficiárias do Programa Bolsa Família, mães com baixa escolaridade e mães com menos de 15 anos. Busca-se, assim, evidenciar padrões de risco próprios de cada grupo, capazes de subsidiar políticas mais direcionadas. Os subgrupos encontrados foram também disponibilizados em um painel interativo de visualização.
-
-O restante do trabalho está organizado da seguinte forma. A Seção~\ref{sec:relacionados} apresenta os trabalhos relacionados. 
-Já na Seção~\ref{sec:metodologia} descrevemos a metodologia utilizada. 
-A Seção~\ref{sec:resultados} apresenta os resultados, seguida da Seção~\ref{sec:discussao}, onde discutimos os resultados à luz da literatura.
-Por fim, a a Seção~\ref{sec:conclusao} apresenta as conclusões, limitações e trabalhos futuros.
