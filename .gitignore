@@ -1,0 +1,22 @@
+# O Overleaf compila o projeto sozinho: só os fontes (.tex, .bib, .sty,
+# .bst e figuras) precisam ir para o repositório.
+
+# Arquivos gerados pela compilação local
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.run.xml
+*-blx.bib
+main.pdf
+
+# Configuração local do editor
+.vscode/
