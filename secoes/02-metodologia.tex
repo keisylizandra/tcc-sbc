@@ -40,70 +40,40 @@ Os dados provêm da Coorte de 100 Milhões de Brasileiros vinculada ao SINASC, q
 
 A amostra foi construída em quatro etapas, aplicadas nesta ordem sobre um recorte inicial de 31.331.817 registros, entre mães e crianças. (1) Cada criança foi pareada às informações de sua mãe, o que resultou em 16.448.931 pares mãe--filho. (2) Foram mantidos apenas os nascimentos ocorridos entre 2011 e 2015, restando 5.246.874 registros. (3) Excluíram-se as gestações múltiplas (gêmeos e trigêmeos), por se associarem com frequência ao baixo peso ao nascer, chegando-se a 5.242.215 registros. (4) Foram removidos identificadores, atributos redundantes e atributos com mais de 50\% de valores ausentes; esta última etapa reduz o número de colunas, sem alterar o número de registros.
 
-A base final reúne, portanto, 5.242.215 recém-nascidos de famílias de baixa renda, descritos por 42 atributos. A Tabela~\ref{tab:met-atributos} apresenta esses atributos. Para cada um, a tabela informa o nome da variável na base, o nome pelo qual ele aparece nas tabelas de resultados e a sua descrição. São esses os atributos que o algoritmo pode combinar para formar as descrições dos subgrupos, e é a eles que se referem todas as regras apresentadas na Seção~\ref{sec:resultados}.
+A base final reúne, portanto, 5.242.215 recém-nascidos de famílias de baixa renda, descritos por 42 atributos. A Tabela~\ref{tab:met-atributos} apresenta esses atributos. Para cada um, a tabela informa o nome pelo qual ele aparece nas tabelas de resultados e a sua descrição. São esses os atributos que o algoritmo pode combinar para formar as descrições dos subgrupos, e é a eles que se referem todas as regras apresentadas na Seção~\ref{sec:resultados}.
 
-{\footnotesize\setlength{\tabcolsep}{3.5pt}
-\begin{longtable}{@{}L{6.8cm}L{3.1cm}L{4.6cm}@{}}
-\caption{Os 42 atributos que descrevem o nascimento, a mãe, o domicílio e a família da criança, incluindo o recebimento do Bolsa Família.}\label{tab:met-atributos}\\
+\begin{table}[H]
+\caption{Os 42 atributos que descrevem o nascimento, a mãe, o domicílio e a família da criança, incluindo o recebimento do Bolsa Família.}\label{tab:met-atributos}
+\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.95}
+\begin{tabularx}{\textwidth}{@{}L{3.1cm}Y@{\hspace{10pt}}L{3.1cm}Y@{}}
 \toprule
-Nome & Nome nos resultados & Descrição\\
+Atributo & Descrição & Atributo & Descrição\\
 \midrule
-\endfirsthead
-\multicolumn{3}{@{}l}{\textit{Tabela~\ref{tab:met-atributos} (continuação)}}\\
-\toprule
-Nome & Nome nos resultados & Descrição\\
-\midrule
-\endhead
-\midrule
-\multicolumn{3}{@{}r}{\textit{continua na próxima página}}\\
-\endfoot
+Bolsa Família & Criança tinha BF antes de nascer & Despesa total & Soma das despesas da família\\
+Índice de riqueza & Índice de riqueza relativo & Nascimento hospitalar / domiciliar & Local do nascimento\\
+Idade materna & Idade da mãe & Início do pré-natal & Mês em que iniciou o pré-natal\\
+Transferência de renda & Mãe participa de programa de transferência de renda (Bolsa Escola, Bolsa Alimentação, PETI) & Cômodos no domicílio & Quantidade de cômodos do domicílio\\
+Abastecimento de água & Tipo de abastecimento de água no domicílio & Famílias no domicílio & Quantidade de famílias no domicílio\\
+Água canalizada & Domicílio possui água canalizada & Primeira gestação & Primeira gestação, sem filhos vivos nem perda fetal\\
+Banheiro & Domicílio possui banheiro & Perda fetal anterior & Já perdeu alguma gestação\\
+Calçamento do domicílio & Calçamento no domicílio & Parto cesáreo anterior & Já fez alguma cesariana\\
+Destino do lixo & Destino do lixo no domicílio & Apenas partos normais & Já teve filhos, mas de parto normal\\
+Escoamento sanitário & Escoamento sanitário no domicílio & Raça/cor & Raça/cor da criança\\
+Domicílio particular permanente & Status do domicílio & Mãe indígena & Raça/cor da mãe\\
+Iluminação & Iluminação no domicílio & Assistência social & Mãe teve alguma assistência social\\
+Material do domicílio & Material do domicílio & Parto assistido por médico & Quem ajudou no parto\\
+Material do piso & Material do piso do domicílio & Despesa com água/esgoto & Valor gasto com água e esgoto\\
+Sabe ler e escrever & Mãe sabe ler e escrever & Despesa com alimentação & Valor gasto com alimentação\\
+Consultas & Número de consultas pré-natal & Despesa com aluguel & Valor gasto com aluguel\\
+Parto cesárea / parto normal & Tipo de parto & Despesa com gás & Valor gasto com gás\\
+Escolaridade materna & Escolaridade da mãe & Despesa com energia & Valor gasto com energia\\
+Mãe solteira & Estado civil da mãe & Despesa com medicamentos & Valor gasto com medicamentos\\
+Sexo & Sexo da criança feminino & Despesa com transporte & Valor gasto com transporte\\
+Renda familiar & Soma de todas as rendas da família & Parentesco & Parentesco com a pessoa responsável pela família\\
 \bottomrule
-\multicolumn{3}{@{}p{14.9cm}@{}}{Fonte: Elaborada pelos autores, a partir da Coorte de 100 Milhões de Brasileiros vinculada ao SINASC.}\\
-\endlastfoot
-\texttt{bf\_baby} & Bolsa Família & Criança tinha BF antes de nascer\\
-\texttt{ses\_5cat} & índice de riqueza & Índice de riqueza relativo\\
-\texttt{age\_M} & idade materna & Idade da mãe\\
-\texttt{cct\_M} & transferência de renda & Mãe participa de algum programa de transferência de renda (bolsa escola, bolsa alimentação, PETI)\\
-\texttt{cod\_abaste\_agua\_domic} & abastecimento de água & Tipo de abastecimento de água no domicílio\\
-\texttt{cod\_agua\_canalizada\_fam} & água canalizada & Domicílio possui água canalizada\\
-\texttt{cod\_banheiro\_domic\_fam} & banheiro & Domicílio possui banheiro\\
-\texttt{cod\_calcamento\_domic\_fam} & calçamento do domicílio & Calçamento no domicílio\\
-\texttt{cod\_destino\_lixo\_domic\_fam\_eq} & destino do lixo & Destino do lixo no domicílio\\
-\texttt{cod\_escoa\_sanitario\_domic\_fam\_eq} & escoamento sanitário & Escoamento sanitário no domicílio\\
-\texttt{cod\_especie\_domic\_fam\_eq} & domicílio particular permanente & Status do domicílio\\
-\texttt{cod\_iluminacao\_domic\_fam\_eq} & iluminação & Iluminação no domicílio\\
-\texttt{cod\_material\_domic\_fam\_eq} & material do domicílio & Material do domicílio\\
-\texttt{cod\_material\_piso\_fam} & material do piso & Material do piso do domicílio\\
-\texttt{cod\_sabe\_ler\_escrever\_memb\_eq\_M} & sabe ler e escrever & Mãe sabe ler e escrever\\
-\texttt{consultas} & consultas & Número de consultas pré-natal\\
-\texttt{csection} & parto cesárea / parto normal & Tipo de parto\\
-\texttt{escolaridade\_eq\_M} & escolaridade materna & Escolaridade da mãe\\
-\texttt{estcivmae} & mãe solteira & Estado civil da mãe\\
-\texttt{female} & sexo & Sexo da criança feminino\\
-\texttt{hh\_income} & renda familiar & Soma de todas as rendas da família\\
-\texttt{hh\_income\_exp} & despesa total & Soma das despesas da família\\
-\texttt{locnasc} & nascimento hospitalar / domiciliar & Local do nascimento\\
-\texttt{mesprenat} & início do pré-natal & Mês em que iniciou o pré-natal\\
-\texttt{qtd\_comodos\_domic\_fam\_eq} & cômodos no domicílio & Quantidade de cômodos do domicílio\\
-\texttt{qtd\_familias\_domic\_fam} & famílias no domicílio & Quantidade de famílias no domicílio\\
-\texttt{primeiraGestacao} & primeira gestação & Sem nenhum filho vivo, sem perda fetal anterior e primeira gestação\\
-\texttt{perdaFetalAnterior} & perda fetal anterior & Já perdeu alguma gestação\\
-\texttt{partoCesarioAnterior} & parto cesáreo anterior & Já fez alguma cesariana\\
-\texttt{partoNormalApenas} & apenas partos normais & Já teve filhos, mas de parto normal\\
-\texttt{racacor\_cidacs} & raça/cor & Raça/cor da criança\\
-\texttt{racacor\_cidacs\_M} & mãe indígena & Raça/cor da mãe\\
-\texttt{social\_assistence\_M} & assistência social & Mãe teve alguma assistência social\\
-\texttt{tpnascassi} & parto assistido por médico & Quem ajudou no parto\\
-\texttt{val\_desp\_agua\_esgoto\_fam\_eq} & despesa com água/esgoto & Valor gasto com água e esgoto\\
-\texttt{val\_desp\_alimentacao\_fam\_eq} & despesa com alimentação & Valor gasto com alimentação\\
-\texttt{val\_desp\_aluguel\_fam\_eq} & despesa com aluguel & Valor gasto com aluguel\\
-\texttt{val\_desp\_gas\_fam\_eq} & despesa com gás & Valor gasto com gás\\
-\texttt{val\_desp\_energia\_fam\_eq} & despesa com energia & Valor gasto com energia\\
-\texttt{val\_desp\_medicamentos\_fam\_eq} & despesa com medicamentos & Valor gasto com medicamentos\\
-\texttt{val\_desp\_transpor\_fam\_eq} & despesa com transporte & Valor gasto com transporte\\
---- & parentesco & Parentesco com a pessoa responsável pela família\\
-\end{longtable}
-}
+\end{tabularx}
+\fontetabela
+\end{table}
 
 %%---------------------------------------------------------------------%%
 \subsection{Desfechos}\label{subsec:met-desfechos}
