@@ -10,12 +10,12 @@ A partir de uma coorte de base populacional, foram definidos quatro desfechos ne
 %% Figura de metodologia: fluxograma desenhado em TikZ                 %%
 %%---------------------------------------------------------------------%%
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  font=\small,
-  node distance=4mm,
-  etapa/.style={draw, rounded corners=2pt, align=center, text width=11cm, inner sep=4pt},
+  font=\footnotesize,
+  node distance=2.5mm,
+  etapa/.style={draw, rounded corners=2pt, align=center, text width=10.5cm, inner sep=2.5pt},
   seta/.style={-{Stealth[length=2.2mm]}, thick}]
 \node[etapa] (base) {\textbf{Coorte de 100 Milhões de Brasileiros vinculada ao SINASC}\\CadÚnico + SINASC + Programa Bolsa Família\\31.331.817 registros (mães e crianças)};
 \node[etapa, below=of base] (pares) {Pareamento de cada criança à sua mãe\\16.448.931 pares mãe--filho};
@@ -129,7 +129,7 @@ Cada subgrupo é representado por uma regra da forma $\mathit{cond} \rightarrow 
 
 A Tabela~\ref{tab:met-exemplo} ilustra a tarefa em um conjunto mínimo, em que o alvo é a melhora do paciente. A descrição ``condição: diabético $\wedge$ tratamento: medicamento A'' define um subgrupo com dois pacientes, ambos com melhora, ao passo que, no conjunto completo, apenas metade dos pacientes melhora. O subgrupo concentra as ocorrências do alvo e, por isso, é considerado relevante.
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \caption{Exemplo de base de dados para a tarefa de descoberta de subgrupos.}\label{tab:met-exemplo}%
 \tabcompacta
