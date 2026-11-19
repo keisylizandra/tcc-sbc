@@ -133,15 +133,15 @@ Assim, o primeiro fator ($cobertura(s)$) pondera a cobertura do subgrupo e o seg
 
 
 Encontrar os subgrupos de maior WRAcc numa base de dados com muitos atributos é uma tarefa de busca complexa.
-Isso porque é computacionamente custoso, ou mesmo inviável, testar todas as possibilidades de subgrupos.
+Isso porque é computacionalmente custoso, ou mesmo inviável, testar todas as possibilidades de subgrupos.
 No entanto, alguns algoritmos de Inteligência Artificial já foram propostos para encontrar subgrupos relevantes sem a necessidade de testar todas as opções.
 
 Um deles é o SSDP+, um algoritmo evolutivo de descoberta de subgrupos voltado a dados com muitos atributos \cite{lucas2018}.
 O SSDP+ possui três parâmetros principais: (1) métrica de avaliação (usamos o WRAcc), (2) número de subgrupos retornados (usamos o valor 5) e um parâmetro de diversidade (valor padrão 0.5), que força o retorno de subgrupos que cubram diferentes exemplos da base de dados.
 
-A busca dos subgrupos foi feita utilizando o SSDP+ para cada desfechos (baixo peso, prematuridade, malformação e apgar baixo) e em cada uma das oito populações (unicípios de até 10 mil habitantes; população rural; população indígena; população quilombola; beneficiárias do Programa Bolsa Família; mães com baixa escolaridade; e mães com menos de 15 anos), resultando em $32$ buscas independentes. 
+A busca dos subgrupos foi feita utilizando o SSDP+ para cada desfecho (baixo peso, prematuridade, malformação e Apgar baixo) e em cada uma das oito populações (recorte geral; municípios de até 10 mil habitantes; população rural; população indígena; população quilombola; beneficiárias do Programa Bolsa Família; mães com baixa escolaridade; e mães com menos de 15 anos), resultando em $32$ buscas independentes. 
 
-Para cada um dos cinco subgrupos retornado nos $32$ contextos de busca, nós reportamos a cobertura (total de recém-nascidos e sua participação no segmento), o número de ocorrências do desfecho (absoluto e relativo) e o \emph{lift}, que é a razão entre a prevalência do desfecho no subgrupo e a prevalência basal do segmento (Equação~\ref{eq:lift}).
+Para cada um dos cinco subgrupos retornados nas $32$ buscas, reportamos a cobertura (total de recém-nascidos e sua participação no segmento), o número de ocorrências do desfecho (absoluto e relativo) e o \emph{lift}, que é a razão entre a prevalência do desfecho no subgrupo e a prevalência basal do segmento (Equação~\ref{eq:lift}).
 
 \begin{equation}\label{eq:lift}
 \mathrm{lift}(s) = \frac{TP/(TP + FP)}{|D^{+}|/|D|},
@@ -156,4 +156,4 @@ de modo que um \emph{lift} de 1,25 indica prevalência 25\% acima da basal daque
 Para tornar os resultados acessíveis a gestores e profissionais de saúde, os subgrupos retornados foram disponibilizados em um painel interativo. A construção seguiu quatro etapas. Primeiro, os arquivos gerados pelas execuções do SSDP+ foram consolidados e tratados por rotinas em Python, que uniformizaram as descrições das regras e associaram cada resultado ao seu desfecho e ao seu recorte. Em seguida, os dados consolidados foram convertidos em comandos de inserção e carregados em um banco de dados relacional PostgreSQL. A terceira etapa consistiu no desenvolvimento de uma API REST, em Java com Spring Boot, responsável por servir as consultas do painel. Por fim, a interface foi implementada em HTML, CSS e JavaScript, a partir de protótipos elaborados no Figma e de princípios de narrativa com dados \cite{knaflic2015}.
 
 O painel permite selecionar o desfecho e o recorte e exibe, para a combinação escolhida, os subgrupos retornados com a sua cobertura e o seu risco relativo, ao lado dos totais do recorte. Dessa forma, informações que exigiriam o processamento manual de dezenas de arquivos ficam disponíveis em uma única consulta, o que favorece comparações entre recortes e a tomada de decisão baseada em dados. 
-Além dos recortes populacionais descritos neste artigo, o paineil incluiu também recortes populacionais por cidade brasileira em que houve mais de 10 casos dos desfeixos considerados.
+Além dos recortes populacionais descritos neste artigo, o painel inclui também recortes por município brasileiro em que houve mais de 10 casos dos desfechos considerados.
